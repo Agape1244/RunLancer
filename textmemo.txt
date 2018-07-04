@@ -1,0 +1,11 @@
+構成のイメージ
+
+Presentation層
+・Playerview
+・Blockview
+・Gamemaster
+
+Domain層
+・Playermodel
+・Blockmodel
+
