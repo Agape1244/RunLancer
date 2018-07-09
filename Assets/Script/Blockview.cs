@@ -9,6 +9,7 @@ public class Blockview : MonoBehaviour {
     public GameObject movingBlock;
 
 
+
 	// Use this for initialization
 	void Start () {
         StartCoroutine(MoveMap());//このふたつはこるーちんしちゃうぜ
@@ -17,28 +18,29 @@ public class Blockview : MonoBehaviour {
 	
     IEnumerator SetBlock()//ブロックをセットする命令
     {
-        while (true)
+        while (true)//ブレイクのないwhile文。。。つまりエンドレス？
         {
-            Vector3 pos = new Vector3(11, Random.Range(3f, -1.5f), 0);
-            Vector3 pos1 = new Vector3(11, Random.Range(3f, -1.5f), 0);
-            GameObject block=Instantiate(Bblock,pos,transform.rotation) as GameObject;
-            GameObject block1 = Instantiate(Rblock, pos1, transform.rotation) as GameObject;
-            block.transform.parent = movingBlock.transform;
-            block1.transform.parent = movingBlock.transform;
-            yield return new WaitForSeconds(1.5f);
-            //todo　ほぼ借り物。解析まだ。実行可否まだ。つまりまだまだ。
-            //todo ぅえいとふぉあせこんどずの（）内はSpeedに合わせて間隔短くしていきたい
+            Vector3 posB = new Vector3(11, Random.Range(3f, -1.5f), 0);//ランダムなY軸３F～－１．５
+            Vector3 posR = new Vector3(11, Random.Range(3f, -1.5f), 0);
+            GameObject blockB=Instantiate(Bblock,posB,transform.rotation) as GameObject;//インスタンス、これはぽすの場所にオブジェクト召喚しちゃうやつ。
+            GameObject blockR = Instantiate(Rblock, posR, transform.rotation) as GameObject;
+            blockB.transform.parent = movingBlock.transform;//生み出したオブジェクトの親関係。むーびんぐブロックにいんすたんすしたくろーんをいれちゃうぜ
+            blockR.transform.parent = movingBlock.transform;
+            yield return new WaitForSeconds(1.5f);//１．５秒処理するのまってねー
+            //todo　解析完了。現状ブロックが重なっても無視して召喚しちゃうのでそこ直したいが、後回し。
+            //todo ぅえいとふぉあせこんどずの（）内はSpeedに合わせて間隔短くすることによってブロック召喚が早くなる
         }
      
     }
 
     IEnumerator MoveMap()//ブロックが移動する命令
     {
-        while (true) {
-            Vector3 pos = movingBlock.transform.position;
-            pos.x -= 4 * Time.deltaTime;
-            movingBlock.transform.position = pos;
-            yield return 0;//todo これも借り物。解析まだ。背景動かすものっぽい？
+        while (true) {//ぶれいくのないわいるぶん
+            Vector3 pos = movingBlock.transform.position;//ぽすにムービングブロックの位置情報いれるぜ
+            pos.x -= 4 * Time.deltaTime;//ぽすのX方向（マイナス）に一秒あたり４進む
+            movingBlock.transform.position = pos;//ムービングブロックにポス（変動後）の位置情報を入れる
+            yield return 0;
+            //todo 解析完了。Speedに合わせて数字を大きくすることによって左へ早く流れる
         }
     }
 	// Update is called once per frame
