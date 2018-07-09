@@ -9,13 +9,14 @@ public class Blockview : MonoBehaviour {
     public GameObject movingBlock;
 
 
-
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(MoveMap());//このふたつはこるーちんしちゃうぜ
+        StartCoroutine(MoveMap());//このふたつは止めたり進めたりすることができる命令でっせ
         StartCoroutine(SetBlock());
+        
 	}
 	
+
     IEnumerator SetBlock()//ブロックをセットする命令
     {
         while (true)//ブレイクのないwhile文。。。つまりエンドレス？
@@ -32,7 +33,7 @@ public class Blockview : MonoBehaviour {
         }
      
     }
-
+    //繰り返しの保証？
     IEnumerator MoveMap()//ブロックが移動する命令
     {
         while (true) {//ぶれいくのないわいるぶん
@@ -43,6 +44,8 @@ public class Blockview : MonoBehaviour {
             //todo 解析完了。Speedに合わせて数字を大きくすることによって左へ早く流れる
         }
     }
+
+    //todo 床や森も同じように入れることであたかもプレイヤーが右に移動してるように見せれる
 	// Update is called once per frame
 	void Update () {
 		
