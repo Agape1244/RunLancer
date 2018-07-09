@@ -6,13 +6,14 @@ public class Gamemaster : MonoBehaviour {
 
     public float Speed;
     public float Kasokudo;
+    public float morespeed;
 
 
 
     // Use this for initialization
     void Start () {
-        StartCoroutine(Morespeed());
-        StartCoroutine(Logger());
+        StartCoroutine(Morespeed());//スピードが増えていく命令
+        StartCoroutine(Logger());//スピードをログに残す命令
 
     }
 
@@ -20,8 +21,8 @@ public class Gamemaster : MonoBehaviour {
     {
         while (true)
         {//ぶれいくのないわいるぶん
-            Speed += Kasokudo * Time.deltaTime;//スピードに１秒当たりKasokudoづつ増加
-            yield return 0;
+            Speed += Kasokudo;//スピードにモアスピード秒当たりKasokudoづつ増加
+            yield return new WaitForSeconds(morespeed);
 
         }
     }
@@ -29,9 +30,9 @@ public class Gamemaster : MonoBehaviour {
     IEnumerator Logger()//Speedの値をLogに書き出す
     {
         while (true)
-        {//ぶれいくのないわいるぶん
-            Debug.Log(Speed);
-            yield return new WaitForSeconds(1.0f);
+        {//ぶれいくのないわいるぶんは永遠と続く
+            Debug.Log(Speed);//ログにスピードを残す
+            yield return new WaitForSeconds(1.0f);//それを一秒ごとにやんな！
 
         }
     }
