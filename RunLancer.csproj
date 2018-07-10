@@ -88,6 +88,7 @@
     <Compile Include="Assets\Script\Blockmodel.cs" />
     <Compile Include="Assets\Script\Blockview.cs" />
     <Compile Include="Assets\Script\Gamemaster.cs" />
+    <Compile Include="Assets\Script\Haikeiview.cs" />
     <Compile Include="Assets\Script\Playermodel.cs" />
     <Compile Include="Assets\Script\Playerview.cs" />
     <Compile Include="Assets\Test\Memo.cs" />

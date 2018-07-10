@@ -6,8 +6,6 @@ public class Blockview : MonoBehaviour {
 
     public GameObject Rblock;
     public GameObject Bblock;
-    public GameObject Haikei1;
-    public GameObject Haikei2;
     public GameObject movingBlock;
     public GameObject gamemaster;
 
@@ -36,22 +34,22 @@ public class Blockview : MonoBehaviour {
             {
                 i = 0.3f;
             }
+            yield return new WaitForSeconds(i);//i秒でもっかいする
             
             int R = UnityEngine.Random.Range(0, 2);//ランダムで壊れるブロック、壊れないブロックをどちらか生成
             if (R == 1)
             {
-            Vector3 posB = new Vector3(11, Random.Range(3f, -1.5f), 0);//ランダムなY軸３F～－１．５
+            Vector3 posB = new Vector3(11, Random.Range(2.7f, -3.0f), 0);//ランダムなY軸３F～－１．５
             GameObject blockB=Instantiate(Bblock,posB,transform.rotation) as GameObject;//インスタンス、これはぽすの場所にオブジェクト召喚しちゃうやつ。
             blockB.transform.parent = movingBlock.transform;//生み出したオブジェクトの親関係。むーびんぐブロックにいんすたんすしたくろーんをいれちゃうぜ
 
             }
             else
             {
-            Vector3 posR = new Vector3(11, Random.Range(3f, -1.5f), 0);
+            Vector3 posR = new Vector3(11, Random.Range(2.7f, -3.0f), 0);
             GameObject blockR = Instantiate(Rblock, posR, transform.rotation) as GameObject;
             blockR.transform.parent = movingBlock.transform;
 
-            yield return new WaitForSeconds(i);//i秒でもっかいする
 
             }
 
