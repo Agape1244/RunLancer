@@ -31,7 +31,6 @@ public class Gamemaster : MonoBehaviour {
     {
         while (true)
         {//ぶれいくのないわいるぶんは永遠と続く
-            Debug.Log(Speed);//ログにスピードを残す
             yield return new WaitForSeconds(1.0f);//それを一秒ごとにやんな！
 
         }
