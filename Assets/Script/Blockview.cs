@@ -14,7 +14,11 @@ public class Blockview : MonoBehaviour {
     public float Blockmove;
     public float count;
 
-	// Use this for initialization
+
+
+	
+    
+    // Use this for initialization
 	void Start () {
         StartCoroutine(MoveMap());//動く命令
         StartCoroutine(SetBlock());//ブロックを産む命令をスタートで繰り返しさせちゃうぜ！

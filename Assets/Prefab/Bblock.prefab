@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakTrg: 1
+  scorepoint: 50
 --- !u!212 &212164698825706550
 SpriteRenderer:
   m_ObjectHideFlags: 1

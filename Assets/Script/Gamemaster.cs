@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class Gamemaster : MonoBehaviour {
 
@@ -8,15 +11,38 @@ public class Gamemaster : MonoBehaviour {
     public float Kasokudo;
     public float morespeed;
 
+    private int allscore=0;
 
+    public int Getallscore()
+    {
+        return allscore;
+    }
+
+    [SerializeField]
+    Text speedtext;
+    [SerializeField]
+    Text scoretext;
+
+    /// <summary>
+    /// GameOver
+    /// </summary>
     public void Gameover()
     {
-        //todo シーンを変える
+        SceneManager.LoadScene("GameOver");
+
+    }
+
+    public void ScoreAdd(int score)
+    {
+        allscore += score;
+        scoretext.text = "Score:" + allscore;
     }
 
 
     // Use this for initialization
     void Start () {
+        scoretext.text = "Score:0";
+        DontDestroyOnLoad(this.gameObject);//死なないオブジェクト
         StartCoroutine(Morespeed());//スピードが増えていく命令
         StartCoroutine(Logger());//スピードをログに残す命令
 
@@ -27,7 +53,12 @@ public class Gamemaster : MonoBehaviour {
         while (true)
         {//ぶれいくのないわいるぶん
             Speed += Kasokudo;//スピードにモアスピード秒当たりKasokudoづつ増加
+            if (speedtext != null) 
+                speedtext.text="Speed:"+Speed.ToString();
+
+
             yield return new WaitForSeconds(morespeed);
+
 
         }
     }

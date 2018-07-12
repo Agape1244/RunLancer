@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Blockmodel : MonoBehaviour {
 
@@ -11,14 +10,22 @@ public class Blockmodel : MonoBehaviour {
     [SerializeField]
     private bool breakTrg;
 
-	// Use this for initialization
-	void Start () {
+    /// <summary>
+    /// スコア値
+    /// </summary>
+    [SerializeField]
+    private int scorepoint;
+
+
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //テスト用編集
+        
 		
 	}
 
@@ -29,6 +36,9 @@ public class Blockmodel : MonoBehaviour {
             Debug.Log("DODOD" + collider);
             if (breakTrg)
             {
+                
+
+
                 BreakBlock();
                 
                 // Debug.Log("break");
@@ -46,8 +56,17 @@ public class Blockmodel : MonoBehaviour {
     /// </summary>
     void BreakBlock()
     {
-        Destroy(this.gameObject);//this
-    }
+        GameObject master;
+        master = GameObject.Find("GameMaster");
+        Gamemaster gamemaster;
+        gamemaster = master.GetComponent<Gamemaster>();
+        gamemaster.ScoreAdd(scorepoint);
+
+
+       Destroy(this.gameObject);//this
+
+    } 
+
 
 
     /// <summary>
@@ -55,7 +74,16 @@ public class Blockmodel : MonoBehaviour {
     /// </summary>
     void NoBreakBlock()
     {
-        SceneManager.LoadScene("GameOver");
+        GameObject master;
+        master = GameObject.Find("GameMaster");
+        Gamemaster gamemaster;
+        gamemaster = master.GetComponent<Gamemaster>();
+        gamemaster.Gameover();
+
     }
+
+
+
+
 
 }
