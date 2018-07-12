@@ -19,7 +19,7 @@ x64/
 x86/
 bld/
 [Bb]in/
-!RunLancer/Assets/Plugins/UnityPurchasing/Bin
+!Assets/Plugins/UnityPurchasing/Bin
 [Oo]bj/
 [Ll]og/
 
@@ -259,12 +259,12 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-RunLancer/RunLancer.Editor.csproj
-RunLancer/RunLancer.Plugins.csproj
-RunLancer/RunLancer.sln
-RunLancer/Library
-RunLancer/Log
-RunLancer/Temp
+RunLancer.Editor.csproj
+RunLancer.Plugins.csproj
+RunLancer.sln
+Library
+Log
+Temp
 
 # Project file
 RunLancer.csproj
@@ -274,5 +274,5 @@ RunLancer.Editor.Plugins.csproj
 rom/
 
 # MODELA SaveData and Debug Log
-RunLancer/data/files/usr
-RunLancer/log
+data/files/usr
+log

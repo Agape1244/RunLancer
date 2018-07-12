@@ -9,6 +9,11 @@ public class Gamemaster : MonoBehaviour {
     public float morespeed;
 
 
+    public void Gameover()
+    {
+        //todo シーンを変える
+    }
+
 
     // Use this for initialization
     void Start () {

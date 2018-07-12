@@ -15,6 +15,7 @@ public class Haikeiview : MonoBehaviour {
     //public Gameobject CheckHaikei2;
     public GameObject movingHaikei;
     public GameObject movingCheck;
+    public List<GameObject> Haikei1List = new List<GameObject>();
 
 
     
@@ -23,6 +24,7 @@ public class Haikeiview : MonoBehaviour {
     public float Haikeiset;
     public float Haikeimove;
     public Vector3 Checkpos;
+    public float CountHaikei1=0;
 
 
 
@@ -35,7 +37,7 @@ public class Haikeiview : MonoBehaviour {
 
     }
 
-    IEnumerator MoveCheck()//ブロックが移動する命令
+    IEnumerator MoveCheck()//チェックが移動する命令
     {
         while (true)
         {//ぶれいくのないわいるぶん
@@ -48,7 +50,7 @@ public class Haikeiview : MonoBehaviour {
         }
     }
 
-    IEnumerator MoveHaikei1()//ブロックが移動する命令
+    IEnumerator MoveHaikei1()//背景が移動する命令
     {
         while (true)
         {//ぶれいくのないわいるぶん
@@ -74,20 +76,33 @@ public class Haikeiview : MonoBehaviour {
             Debug.Log("true");//ログ
 
         }
+        DestroyHaikei1();
 
     }
 
+    void DestroyHaikei1()//リストに入ってるオブジェクトを消すやつ
+    {
+        if (Checkpos.x < -2f)//新しい背景１が召喚されるタイミングと一緒
+        {
+            for (int i = 0; i < Haikei1List.Count; i++)//
+
+                Destroy(Haikei1List[i], 10f);//デストロイ10秒後
+        }
+    }
+
+    
 
     void StartHaikei1Set()//初回背景召喚
     {
         Vector3 pos1 = new Vector3(35, 0.5f, 0);//pos指定
         GameObject Haikei1P = Instantiate(Haikei1, pos1, transform.rotation) as GameObject;//インスタンス、これはぽすの場所にオブジェクト召喚しちゃうやつ。
         Haikei1P.transform.parent = movingHaikei.transform;//生み出したオブジェクトの親関係。むーびんぐ背景にいんすたんすしたくろーんをいれちゃうぜ
+        Haikei1List.Add(Haikei1P);
+
 
         Vector3 posC = new Vector3(35, -3, 0);
         GameObject CheckHaikei1Prefab = Instantiate(CheckHaikei1, posC, transform.rotation) as GameObject;//オブジェクト生成
         CheckHaikei1Prefab.transform.parent = movingHaikei.transform;//生み出したオブジェクトの親関係。むーびんぐ背景にいんすたんすしたくろーんをいれちゃうぜ
-
 
 
     }
