@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Gameover : MonoBehaviour {
     [SerializeField]
@@ -14,8 +15,12 @@ public class Gameover : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene("Title");
+        }
+
+    }
 
     void ScoreYomu()
     {
