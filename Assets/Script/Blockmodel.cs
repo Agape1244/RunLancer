@@ -10,11 +10,17 @@ public class Blockmodel : MonoBehaviour {
     [SerializeField]
     private bool breakTrg;
 
+    [SerializeField]
+    ParticleSystem particleEffect;
+
     /// <summary>
     /// スコア値
     /// </summary>
     [SerializeField]
     private int scorepoint;
+
+    [SerializeField]
+    private GameObject test;
 
 
 
@@ -39,16 +45,11 @@ public class Blockmodel : MonoBehaviour {
             Debug.Log("DODOD" + collider);
             if (breakTrg)
             {
-                
-
-
                 BreakBlock();
-                
                 // Debug.Log("break");
             }
             else
             {
-
                 NoBreakBlock();
                 // Debug.Log("No break");
             }
@@ -65,11 +66,31 @@ public class Blockmodel : MonoBehaviour {
         Gamemaster gamemaster;
         gamemaster = master.GetComponent<Gamemaster>();
         gamemaster.ScoreAdd(scorepoint);
+        AddParticul();
+
+        //todo パーティクル発生タイミング
 
 
        Destroy(this.gameObject);//this
 
     } 
+
+    void AddParticul()
+    {
+        Vector3 pos = this.gameObject.transform.position;
+        GameObject particle = Instantiate(particleEffect.gameObject, pos, transform.rotation) ;//インスタンス、これはぽすの場所にオブジェクト召喚しちゃうやつ。
+       // particleEffect.transform.position=this.gameObject.transform.position;
+        particleEffect.Emit(1);
+        Debug.Log("パーティクルON");
+
+        Destroy(particle, 1.0f);
+        //todo パーティクルはできた
+        //todo パーティクルの発生はできた
+        //todo 表示順を直した
+        //todo パーティクルの位置の指定できた
+
+        //増えるオブジェクト消えた
+    }
 
 
 

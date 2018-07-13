@@ -14,7 +14,7 @@ public class Playerview : MonoBehaviour {
     private AudioSource sound01;
 
 
-
+    [SerializeField] ParticleSystem tapEffect;
 
 
     // Use this for initialization
@@ -36,7 +36,11 @@ public class Playerview : MonoBehaviour {
             rb2D.AddForce(new Vector2(0, jumpForce * 10.0f));
             jumpCount++;
             sound01.PlayOneShot(sound01.clip);
-        }
+/*
+                tapEffect.Emit(1);
+                Debug.Log("パーティクルON");*/
+
+            }
     }
 }
 

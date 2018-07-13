@@ -100,7 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakTrg: 1
+  particleEffect: {fileID: 198743048328619646, guid: 2260db74a01ad894d912f6d98b50fe9a,
+    type: 2}
   scorepoint: 30
+  test: {fileID: 1483180567243052, guid: 2260db74a01ad894d912f6d98b50fe9a, type: 2}
 --- !u!212 &212164698825706550
 SpriteRenderer:
   m_ObjectHideFlags: 1
