@@ -76,6 +76,7 @@ public class Blockview : MonoBehaviour {
         }
     }
 
+
     //todo 床や森も同じように入れることであたかもプレイヤーが右に移動してるように見せれる
 	// Update is called once per frame
 	void Update () {

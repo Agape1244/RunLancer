@@ -5,26 +5,44 @@ using UnityEngine;
 public class Playerview : MonoBehaviour {
 
     private Rigidbody2D rb2D;//リジットボデーの箱
-    private float jumpForce = 10.0f;//ジャンプパワー１０
+    [SerializeField]
+    private float jumpForce;
+    private const int MAX_JUMP_COUNT = 2;//ジャンプできる最大回数
+
+    private int jumpCount = 0;
+    private bool isJump=false;
+
+
+
+
+
 
 	// Use this for initialization
 	void Start () {
         rb2D = GetComponent<Rigidbody2D>();//リジットボデーの読み込み
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Jump();//←マウスクリックでジャンプ。命令内容は下で
-        }
-	}
 
-    void Jump()//ジャンプの命令内容
+    // Update is called once per frame
+    void Update()
     {
-        rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
-    }//ベロシティは早さをつかさどる（べくたー２の）
-    //これによりリジットボデーに指定されたオブジェクトはX軸は特になし、Y軸にジャンプフォースで指示したぱうわー１０の速度、で動く、という命令ジャンプができた。
-    //todo 動作確認完了。クリックでジャンプ。ふわふわしてた。２段３段とジャンプできちゃう。要修正
+        if (jumpCount < MAX_JUMP_COUNT && Input.GetMouseButtonDown(0))
+        {
+            isJump = true;
+            if (isJump)
+            {
+                rb2D.AddForce(new Vector2(0, jumpForce * 10.0f));
+                jumpCount++;
+            }
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Yuka")
+        {
+            jumpCount = 0;
+        }
+    }
 }
