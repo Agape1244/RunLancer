@@ -11,31 +11,34 @@ public class Playerview : MonoBehaviour {
 
     private int jumpCount = 0;
     private bool isJump=false;
+    private AudioSource sound01;
 
 
 
 
 
-
-	// Use this for initialization
-	void Start () {
-        rb2D = GetComponent<Rigidbody2D>();//リジットボデーの読み込み
-		
-	}
-
-    // Update is called once per frame
-    void Update()
+    // Use this for initialization
+    void Start()
     {
-        if (jumpCount < MAX_JUMP_COUNT && Input.GetMouseButtonDown(0))
+        rb2D = GetComponent<Rigidbody2D>();//リジットボデーの読み込み
+        sound01 = GetComponent<AudioSource>();
+    }
+
+
+// Update is called once per frame
+    void Update()
+{
+    if (jumpCount < MAX_JUMP_COUNT && Input.GetMouseButtonDown(0))
+    {
+        isJump = true;
+        if (isJump)
         {
-            isJump = true;
-            if (isJump)
-            {
-                rb2D.AddForce(new Vector2(0, jumpForce * 10.0f));
-                jumpCount++;
-            }
+            rb2D.AddForce(new Vector2(0, jumpForce * 10.0f));
+            jumpCount++;
+            sound01.PlayOneShot(sound01.clip);
         }
     }
+}
 
 
     private void OnCollisionEnter2D(Collision2D collision)

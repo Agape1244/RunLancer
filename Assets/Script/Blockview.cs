@@ -22,7 +22,8 @@ public class Blockview : MonoBehaviour {
 	void Start () {
         StartCoroutine(MoveMap());//動く命令
         StartCoroutine(SetBlock());//ブロックを産む命令をスタートで繰り返しさせちゃうぜ！
-        
+
+
 	}
 	
 

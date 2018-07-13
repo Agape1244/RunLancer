@@ -8,6 +8,15 @@ public class Gameover : MonoBehaviour {
     [SerializeField]
     Text scoreriz;
 
+
+    [SerializeField]
+    private bool checkSceneChange=true;
+
+    public bool GetSceneChange()
+    {
+        return checkSceneChange;
+    }
+
 	// Use this for initialization
 	void Start () {
         ScoreYomu();
@@ -17,6 +26,7 @@ public class Gameover : MonoBehaviour {
 	void Update () {
         if (Input.GetMouseButtonDown(0))
         {
+            checkSceneChange = false;
             SceneManager.LoadScene("Title");
         }
 

@@ -18,10 +18,13 @@ public class Blockmodel : MonoBehaviour {
 
 
 
+
+
     // Use this for initialization
     void Start () {
-		
-	}
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -56,6 +59,7 @@ public class Blockmodel : MonoBehaviour {
     /// </summary>
     void BreakBlock()
     {
+
         GameObject master;
         master = GameObject.Find("GameMaster");
         Gamemaster gamemaster;
@@ -74,6 +78,7 @@ public class Blockmodel : MonoBehaviour {
     /// </summary>
     void NoBreakBlock()
     {
+
         GameObject master;
         master = GameObject.Find("GameMaster");
         Gamemaster gamemaster;

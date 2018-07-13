@@ -13,6 +13,15 @@ public class Gamemaster : MonoBehaviour {
 
     private int allscore=0;
 
+    public AudioSource sound01;
+    public AudioSource sound02;
+
+    private bool getSceneChange=true;
+
+
+
+
+
     public int Getallscore()
     {
         return allscore;
@@ -24,16 +33,22 @@ public class Gamemaster : MonoBehaviour {
     Text scoretext;
 
     /// <summary>
-    /// GameOver
+    /// GameOverへのシーン移動
     /// </summary>
     public void Gameover()
     {
+        sound02.PlayOneShot(sound02.clip);
         SceneManager.LoadScene("GameOver");
 
     }
-
+    /// <summary>
+    /// オールスコアにスコアを加算
+    /// </summary>
+    /// <param name="score"></param>
     public void ScoreAdd(int score)
     {
+
+        sound01.PlayOneShot(sound01.clip);
         allscore += score;
         scoretext.text = "Score:" + allscore;
     }
@@ -73,6 +88,29 @@ public class Gamemaster : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
+        /*
+        GetChangeScene();
+        if (getSceneChange != true)
+        {
+            Destroy(this.gameObject);
+        }
+        
+        
+
+        */
+       
+    }
+/*
+    void GetChangeScene(){
+
+        GameObject gameover;
+        gameover = GameObject.Find("MainController");
+        Gameover overgame;
+        overgame = gameover.GetComponent<Gameover>();
+        getSceneChange = overgame.GetSceneChange();
+
 
     }
+    */
+
 }
