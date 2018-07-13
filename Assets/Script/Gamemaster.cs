@@ -18,7 +18,7 @@ public class Gamemaster : MonoBehaviour {
 
     private bool getSceneChange=true;
 
-
+    private float speedAdd=0;
 
 
 
@@ -26,7 +26,8 @@ public class Gamemaster : MonoBehaviour {
     {
         return allscore;
     }
-
+    [SerializeField]
+    Text kasanScore;
     [SerializeField]
     Text speedtext;
     [SerializeField]
@@ -51,6 +52,7 @@ public class Gamemaster : MonoBehaviour {
         sound01.PlayOneShot(sound01.clip);
         allscore += score;
         scoretext.text = "Score:" + allscore;
+
     }
 
 
@@ -70,7 +72,9 @@ public class Gamemaster : MonoBehaviour {
             Speed += Kasokudo;//スピードにモアスピード秒当たりKasokudoづつ増加
             if (speedtext != null) 
                 speedtext.text="Speed:"+Speed.ToString();
-
+            allscore += (int)Speed;
+            scoretext.text = "Score:" + allscore;
+            speedAdd++;
 
             yield return new WaitForSeconds(morespeed);
 
@@ -88,29 +92,9 @@ public class Gamemaster : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-        /*
-        GetChangeScene();
-        if (getSceneChange != true)
-        {
-            Destroy(this.gameObject);
-        }
-        
-        
 
-        */
        
     }
-/*
-    void GetChangeScene(){
 
-        GameObject gameover;
-        gameover = GameObject.Find("MainController");
-        Gameover overgame;
-        overgame = gameover.GetComponent<Gameover>();
-        getSceneChange = overgame.GetSceneChange();
-
-
-    }
-    */
 
 }

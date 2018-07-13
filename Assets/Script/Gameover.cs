@@ -8,7 +8,7 @@ public class Gameover : MonoBehaviour {
     [SerializeField]
     Text scoreriz;
 
-
+    private GameObject master;
     [SerializeField]
     private bool checkSceneChange=true;
 
@@ -20,6 +20,7 @@ public class Gameover : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         ScoreYomu();
+        DestroyGameMaster();
 	}
 	
 	// Update is called once per frame
@@ -34,11 +35,14 @@ public class Gameover : MonoBehaviour {
 
     void ScoreYomu()
     {
-        GameObject master;
         master = GameObject.Find("GameMaster");
         Gamemaster gamemaster;
         gamemaster = master.GetComponent<Gamemaster>();
         scoreriz.text="Score:"+gamemaster.Getallscore().ToString();
+    }
+    void DestroyGameMaster()
+    {
+        Destroy(master);
     }
 
 }
